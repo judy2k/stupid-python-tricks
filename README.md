@@ -1,4 +1,4 @@
-# stupid-python-tricks
+# Stupid Python Tricks
 
 This is (or will be) a consolidated repository of all the stupid Python tricks
 I have written (and can still find).
