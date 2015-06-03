@@ -67,3 +67,9 @@ It's possible I came up with inspiration from looking at someone else's code.
 
 Contains an 'everlasting cache' (which is not very useful), and a (crazy)
 decorator-based dependency calling mechanism. Warning, may cause seizures!
+
+# stupid_metaclass_tricks
+
+Only one trick! A metaclass that automatically replaces `get_` and `set_`
+methods with properties that call the methods. Too much magic, but a neat trick,
+I think.
