@@ -53,4 +53,12 @@ if 'Yup' == True-ish:
 ## marge_simpson
 
 I wanted to see if I could create an emoticon that was valid Python syntax.
-It turns out I could! @@@[:-P]
+It turns out I could! `@@@[:-P]`
+
+## clever_path_ob
+
+Subclass `str`, add a bunch of interesting properties and methods, and *voila*,
+easy path management, if a little bit too much voodoo.
+
+**Note:** I'm not 100% sure I wrote this. Some of it doesn't seem like my style.
+It's possible I came up with inspiration from looking at someone else's code.
