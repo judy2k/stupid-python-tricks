@@ -53,7 +53,7 @@ if 'Yup' == True-ish:
 ## marge_simpson
 
 I wanted to see if I could create an emoticon that was valid Python syntax.
-It turns out I could! `@@@[:-P]`
+It turns out I could! `OOO[:-P]`
 
 ## clever_path_ob
 
