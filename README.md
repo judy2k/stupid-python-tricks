@@ -49,3 +49,8 @@ a `ValueError`
 if 'Yup' == True-ish:
     print 'True-ish!'
 ```
+
+## marge_simpson
+
+I wanted to see if I could create an emoticon that was valid Python syntax.
+It turns out I could! @@@[:-P]
