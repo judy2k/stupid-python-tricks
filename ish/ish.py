@@ -26,15 +26,16 @@ class TrueIsh(object):
                 cleaned_value = other.decode('utf-8').strip().lower()
             else:
                 cleaned_value = other.strip().lower()
-            trueish = cleaned_value in TRUE_STRINGS
-            falseish = cleaned_value in FALSE_STRINGS
-            print trueish, falseish
-            if trueish:
+            is_trueish = cleaned_value in TRUE_STRINGS
+            is_falseish = cleaned_value in FALSE_STRINGS
+            print is_trueish, is_falseish
+            if is_trueish:
                 return True
-            elif falseish:
+            elif is_falseish:
                 return False
             else:
-                raise ValueError("Maybe! ({!r} is not recognised)".format(other))
+                raise ValueError(
+                    "Maybe! ({!r} is not recognised)".format(other))
         else:
             return bool(other)
 

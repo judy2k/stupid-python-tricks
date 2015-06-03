@@ -1,4 +1,6 @@
-import os, shutil
+import os
+import shutil
+
 
 class Path(str):
     def __new__(cls, path):
