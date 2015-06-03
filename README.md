@@ -18,3 +18,12 @@ strategy pattern implementation, and dynamically named closures (I was
 especially proud of that).
 
 It is PEP-8 compliant.
+
+## one_line_regex
+
+A friend of mine used to complain that he couldn't run a regex as part of an
+`if` statement's expression if he wanted to use the returned groups (you can
+in Perl using implicit variables).
+
+I worked out how to modify the caller's scope to dynamically add a variable
+containing the result of the pattern match. *Mission accomplished*.
