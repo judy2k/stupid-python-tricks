@@ -62,3 +62,8 @@ easy path management, if a little bit too much voodoo.
 
 **Note:** I'm not 100% sure I wrote this. Some of it doesn't seem like my style.
 It's possible I came up with inspiration from looking at someone else's code.
+
+# decorator_experiments
+
+Contains an 'everlasting cache' (which is not very useful), and a (crazy)
+decorator-based dependency calling mechanism. Warning, may cause seizures!
