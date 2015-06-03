@@ -46,53 +46,47 @@ def depends(dependency_list):
 
 @once_only
 def should_only_run_once():
-    print
-    "Function has been run!"
+    print "Function has been run!"
 
 
 should_only_run_once()
 should_only_run_once()
 
 
-def a():
-    print
-    'a1',
+def a1():
+    print 'a1'
 
 
-def b():
-    print
-    'b1',
+def b1():
+    print 'b1'
 
 
-@depends([a, b])
-def c():
-    print
-    'c1'
+@depends([a1, b1])
+def c1():
+    print 'c1'
 
 
-c()
+print '--------'
+c1()
 
 
-@depends([a])
-def b():
-    print
-    'b2',
+@depends([a1])
+def b2():
+    print 'b2'
 
 
-@depends([b])
-def c():
-    print
-    'c2'
+@depends([b2])
+def c2():
+    print 'c2'
 
 
-c()
+print '--------'
+c2()
 
 
-# There's a bug in this last one - calls a1 twice:
-@depends(['a', 'b'])
-def c():
-    print
-    'c3'
+@depends(['a1', 'b1'])
+def c3():
+    print 'c3'
 
-
-c()
+print '--------'
+c3()
