@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import sys
+
 
 TRUE_STRINGS = [
     'true', 'yes', 'on', '1', 'yeah', 'yup',
@@ -55,6 +57,25 @@ class Ish(object):
 trueish = TrueIsh()
 falseish = FalseIsh()
 ish = Ish()
+__rsub__ = ish.__rsub__
+
+
+class RsubableModule(type(sys)):
+    def __init__(self, original_module):
+        type(sys).__init__(self, original_module.__name__)
+        self._original_module = original_module
+
+    def __rsub__(self, *args, **kwargs):
+        return self._original_module.__rsub__(*args, **kwargs)
+
+    def __getattribute__(self, item):
+        if item in ['__rsub__', '_original_module']:
+            return object.__getattribute__(self, item)
+        return getattr(self._original_module, item)
+
+
+sys.modules[__name__] = RsubableModule(sys.modules[__name__])
+
 
 if __name__ == '__main__':
     print 'Yup' == True-ish

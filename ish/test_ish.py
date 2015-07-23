@@ -2,13 +2,16 @@
 
 import pytest
 
-from ish import ish
+import ish
+from ish import ish as ish_  # backwards compatibility
 from ish import TRUE_STRINGS
 
 
 def test_true_ish():
     assert 'Yeah' == True-ish
     assert 'yup' == True-ish
+    assert 'Yeah' == True-ish_
+    assert 'yup' == True-ish_
 
 
 def test_true_ish_unicode():
