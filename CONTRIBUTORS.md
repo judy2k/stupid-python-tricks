@@ -1,4 +1,4 @@
 # Contributors
 
-Me! (@judy2k)
-Mikhail Korobov (kmike)
+* Me! (@judy2k)
+* Mikhail Korobov (kmike)
