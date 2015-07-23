@@ -9,6 +9,8 @@ feature to write something truly horrible.
 
 I used to be a Perl programmer.
 
+I am also [no longer](CONTRIBUTORS.md) the only person responsible for all of this.
+
 
 ## fizz_buzz_abomination
 
