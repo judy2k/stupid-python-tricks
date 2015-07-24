@@ -1,6 +1,25 @@
 # -*- coding: utf-8 -*-
 import sys
 
+try:
+    from evil_neural_networks.face_classifier import detect_and_predict_face_emotion
+except:
+    detect_and_predict_face = None
+
+
+def _is_image(img):
+    try:
+        shape = img.shape
+        if len(shape) == 3 and shape[2] == 3:
+            return True
+        elif len(shape) == 2:
+            return True
+    except:
+        pass
+
+    return False
+
+
 class UnIshable(Exception):
     pass
 
@@ -65,20 +84,26 @@ class FalseIsh(object):
 
 class HappyIsh(object):
     def __eq__(self, other):
-        # TODO - Return True if 'other' is happy!
-        pass
+        if detect_and_predict_face is not None and _is_image(other):
+            return detect_and_predict_face_emotion(other) == 3
+        raise ValueError(
+            "Maybe! ({!r} is not recognised)".format(other))
 
 
 class AngryIsh(object):
     def __eq__(self, other):
-        # TODO - Return True if 'other' is angry!
-        pass
+        if detect_and_predict_face is not None and _is_image(other):
+            return detect_and_predict_face_emotion(other) == 0
+        raise ValueError(
+            "Maybe! ({!r} is not recognised)".format(other))
 
 
 class NeutralIsh(object):
     def __eq__(self, other):
-        # TODO - Return True if 'other' is neutral!
-        pass
+        if detect_and_predict_face is not None and _is_image(other):
+            return detect_and_predict_face_emotion(other) == 6
+        raise ValueError(
+            "Maybe! ({!r} is not recognised)".format(other))
 
 
 class Ish(object):

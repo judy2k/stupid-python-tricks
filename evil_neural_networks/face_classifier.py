@@ -1,3 +1,5 @@
+import numpy as np
+
 import lasagne
 import theano
 from theano import tensor as T
@@ -10,6 +12,19 @@ from evil_neural_networks import dnn_architecture
 
 
 DNN_MODEL_PATH = 'dnn_model/dnn'
+
+
+EMOTIONS = [
+    'Angry-ish',
+    'Disgust-ish',
+    'Fear-ish',
+    'Happy-ish',
+    'Sad-ish',
+    'Surprise-ish',
+    'Neutral-ish'
+]
+
+EMOTION_TO_INDEX = {emotion: i for i, emotion in enumerate(EMOTIONS)}
 
 
 _theano_predict_fn = None
@@ -76,4 +91,14 @@ def detect_and_predict_face(frame):
         return predict_face_greyscale_48(face_48), faces
     else:
         return None, None
+
+
+
+def detect_and_predict_face_emotion(frame):
+    # Get probability vector from detect_and_predict_face
+    prob, faces = detect_and_predict_face(frame)
+    if prob is not None:
+        return np.argmax(prob)
+    else:
+        return None
 
