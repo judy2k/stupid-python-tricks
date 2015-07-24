@@ -33,11 +33,14 @@ def test_maybe():
 def test_happy_ish():
     assert isinstance('happy'-ish, HappyIsh)
 
+
 def test_angry_ish():
     assert isinstance('angry'-ish, AngryIsh)
 
+
 def test_neutral_ish():
     assert isinstance('neutral'-ish, NeutralIsh)
+
 
 def test_error():
     with pytest.raises(UnIshable):
