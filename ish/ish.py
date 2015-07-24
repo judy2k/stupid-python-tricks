@@ -2,7 +2,7 @@
 import sys
 
 try:
-    from evil_neural_networks.face_classifier import detect_and_predict_face_emotion
+    from deep_neural_network.face_classifier import detect_and_predict_face_emotion
 except:
     detect_and_predict_face = None
 
@@ -65,7 +65,7 @@ class TrueIsh(object):
                 cleaned_value = other.strip().lower()
             is_trueish = cleaned_value in TRUE_STRINGS
             is_falseish = cleaned_value in FALSE_STRINGS
-            print is_trueish, is_falseish
+            # print is_trueish, is_falseish
             if is_trueish:
                 return True
             elif is_falseish:
@@ -84,7 +84,7 @@ class FalseIsh(object):
 
 class HappyIsh(object):
     def __eq__(self, other):
-        if detect_and_predict_face is not None and _is_image(other):
+        if detect_and_predict_face_emotion is not None and _is_image(other):
             return detect_and_predict_face_emotion(other) == 3
         raise ValueError(
             "Maybe! ({!r} is not recognised)".format(other))
@@ -92,7 +92,7 @@ class HappyIsh(object):
 
 class AngryIsh(object):
     def __eq__(self, other):
-        if detect_and_predict_face is not None and _is_image(other):
+        if detect_and_predict_face_emotion is not None and _is_image(other):
             return detect_and_predict_face_emotion(other) == 0
         raise ValueError(
             "Maybe! ({!r} is not recognised)".format(other))
@@ -100,7 +100,7 @@ class AngryIsh(object):
 
 class NeutralIsh(object):
     def __eq__(self, other):
-        if detect_and_predict_face is not None and _is_image(other):
+        if detect_and_predict_face_emotion is not None and _is_image(other):
             return detect_and_predict_face_emotion(other) == 6
         raise ValueError(
             "Maybe! ({!r} is not recognised)".format(other))

@@ -8,7 +8,7 @@ import joblib
 
 import cv2
 
-from evil_neural_networks import dnn_architecture
+from deep_neural_network import dnn_architecture
 
 
 DNN_MODEL_PATH = 'dnn_model/dnn'
@@ -71,9 +71,6 @@ def detect_and_predict_face(frame):
     grey = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     faces = _face_cascade.detectMultiScale(frame, 1.3, 5)
-    for (x,y,w,h) in faces:
-        cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
-
     if len(faces) > 0:
         x,y,w,h = faces[0]
 
@@ -101,4 +98,3 @@ def detect_and_predict_face_emotion(frame):
         return np.argmax(prob)
     else:
         return None
-
