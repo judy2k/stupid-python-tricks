@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import sys
 
+class UnIshable(Exception):
+    pass
+
 
 TRUE_STRINGS = [
     'true', 'yes', 'on', '1', 'yeah', 'yup',
@@ -18,6 +21,19 @@ FALSE_STRINGS = [
     'nej',   # Danish
     'nee',   # Dutch
     u'لأ'.lower(),     # Arabic
+]
+HAPPY_STRINGS = [
+    'happy',
+    'happy-face',
+    'joyful',
+]
+ANGRY_STRINGS = [
+    'angry',
+    'anger',
+    'grrr',
+]
+NEUTRAL_STRINGS = [
+    'neutral',
 ]
 
 
@@ -47,13 +63,43 @@ class FalseIsh(object):
         return not trueish.__eq__(other)
 
 
+class HappyIsh(object):
+    def __eq__(self, other):
+        # TODO - Return True if 'other' is happy!
+        pass
+
+
+class AngryIsh(object):
+    def __eq__(self, other):
+        # TODO - Return True if 'other' is angry!
+        pass
+
+
+class NeutralIsh(object):
+    def __eq__(self, other):
+        # TODO - Return True if 'other' is neutral!
+        pass
+
+
 class Ish(object):
     def __rsub__(self, other):
         if other is True:
             return trueish
         elif other is False:
             return falseish
+        elif isinstance(other, str):
+            if other.lower() in HAPPY_STRINGS:
+                return happyish
+            elif other.lower() in ANGRY_STRINGS:
+                return angryish
+            elif other.lower() in NEUTRAL_STRINGS:
+                return neutralish
+        raise UnIshable('{0!r} cannot be ished'.format(other))
 
+
+happyish = HappyIsh()
+angryish = AngryIsh()
+neutralish = NeutralIsh()
 trueish = TrueIsh()
 falseish = FalseIsh()
 ish = Ish()
