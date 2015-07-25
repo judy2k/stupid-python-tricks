@@ -2,6 +2,7 @@
 from __future__ import print_function
 
 import sys
+import string
 
 try:
     from deep_neural_network.face_classifier import detect_and_predict_face_emotion
@@ -31,6 +32,7 @@ FALSE_STRINGS = {
     'nee',   # Dutch
     u'ﻷ',    # Arabic
 }
+STRIP_CHARS = string.whitespace + string.punctuation
 
 HAPPY_STRINGS = {
     'happy',
@@ -59,7 +61,7 @@ class Maybe(ValueError):
 def normalize_string(s):
     if isinstance(s, bytes):
         s = s.decode('utf-8', 'replace')
-    return s.strip().lower()
+    return s.strip(STRIP_CHARS).lower()
 
 
 class BaseIsh(object):

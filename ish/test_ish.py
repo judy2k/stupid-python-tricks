@@ -20,6 +20,10 @@ def test_true_ish_unicode():
     assert mine == True-ish
 
 
+def test_extra_chars():
+    assert ' Yeah!!!' == True-ish
+
+
 def test_false_ish():
     assert 'Nope' == False-ish
     assert 'Narp' == False-ish
