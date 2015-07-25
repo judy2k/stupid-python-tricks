@@ -22,6 +22,7 @@ def test_true_ish_unicode():
 def test_false_ish():
     assert 'Nope' == False-ish
     assert 'Nah' == False-ish
+    assert '' == False-ish
 
 
 def test_maybe():
