@@ -28,6 +28,7 @@ def test_false_ish():
     assert 'Nope' == False-ish
     assert 'Narp' == False-ish
     assert 'Nah' == False-ish
+    assert '' == False-ish
 
 
 def test_maybe():

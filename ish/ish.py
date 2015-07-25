@@ -89,10 +89,11 @@ class BoolIsh(BaseIsh):
         raise Maybe(s)
 
     def __eq__(self, other):
-        if isinstance(other, basestring):
+        result = bool(other)
+
+        if result and isinstance(other, basestring):
             result = self._check_string(other)
-        else:
-            result = bool(other)
+
         return result == self._value
 
 trueish = BoolIsh(True)
