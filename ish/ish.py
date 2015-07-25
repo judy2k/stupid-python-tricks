@@ -10,7 +10,7 @@ TRUE_STRINGS = [
     u'نعم'.lower(),  # Arabic
 ]
 FALSE_STRINGS = [
-    'false', 'no', 'off' '0', 'nope', 'nah',
+    'false', 'no', 'off' '0', 'nope', 'nah', '',
     'non',   # French
     'nein',  # German
     'nej',   # Danish
