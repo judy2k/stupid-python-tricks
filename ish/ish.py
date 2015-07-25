@@ -15,7 +15,7 @@ except NameError:
 
 
 TRUE_STRINGS = {
-    'true', 'yes', 'on', '1', 'yeah', 'yup', 'yarp',
+    'true', 'yes', 'on', 'yeah', 'yup', 'yarp',
     'oui',  # French
     'ja',   # German, Danish, Dutch, Afrikaans, Swedish, Norwegian
     'sim',  # Portuguese
@@ -24,7 +24,7 @@ TRUE_STRINGS = {
     u'ﻦﻌﻣ', # Arabic
 }
 FALSE_STRINGS = {
-    'false', 'no', 'off', '0', 'nope', 'nah', 'narp',
+    'false', 'no', 'off', 'nope', 'nah', 'narp',
     'non',   # French
     'nein',  # German
     'nej',   # Danish
@@ -73,6 +73,11 @@ class BaseIsh(object):
 class BoolIsh(BaseIsh):
     def _check_string(self, s):
         normalized = normalize_string(s)
+
+        try:
+            return bool(int(normalized))
+        except ValueError:
+            pass
 
         if normalized in TRUE_STRINGS:
             return True
