@@ -75,3 +75,22 @@ decorator-based dependency calling mechanism. Warning, may cause seizures!
 Only one trick! A metaclass that automatically replaces `get_` and `set_`
 methods with properties that call the methods. Too much magic, but a neat trick,
 I think.
+
+## Deepish learning
+
+A deep neural network based facial expression classifier is available.
+Using it requires [Theano](http://deeplearning.net/software/theano/)
+([Theano on Github](https://github.com/Theano/Theano)),
+[Lasagne](http://github.com/Lasagne/Lasagne), and
+[OpenCV 3](http://opencv.org/) with Python bindings.
+
+To run a live demo, use IPython Notebook to run
+`Live Deep Neural Network Demo.ipynb`. If you want to train a new model, run
+`Train deep neural network.ipynb`.
+
+To install OpenCV 3 on Windows, download the installer, find the .pyd extension
+and put it into your Python interpreter's `Lib/site-packages` path.
+To install it on MacOS X, use brew;
+[installation instructions for OpenCV 2](https://jjyap.wordpress.com/2014/05/24/installing-opencv-2-4-9-on-mac-osx-with-python-support/)
+(also worked for me for OpenCV v3). You must make OpenCV available to Python in the
+same way as windows (put library in `lib/site-packages`/
