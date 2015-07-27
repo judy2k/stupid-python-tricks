@@ -25,7 +25,7 @@ class UnIshable(Exception):
 
 
 TRUE_STRINGS = [
-    'true', 'yes', 'on', '1', 'yeah', 'yup',
+    'true', 'yes', 'on', '1', 'yeah', 'yup', 'yarp',
     'oui',  # French
     'ja',   # German, Danish, Dutch, Afrikaans, Swedish, Norwegian
     'sim',  # Portuguese
@@ -34,7 +34,7 @@ TRUE_STRINGS = [
     u'نعم'.lower(),  # Arabic
 ]
 FALSE_STRINGS = [
-    'false', 'no', 'off' '0', 'nope', 'nah',
+    'false', 'no', 'off' '0', 'nope', 'nah', 'narp',
     'non',   # French
     'nein',  # German
     'nej',   # Danish
