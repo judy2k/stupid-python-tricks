@@ -11,6 +11,7 @@ from ish import HappyIsh, AngryIsh, NeutralIsh, UnIshable
 def test_true_ish():
     assert 'Yeah' == True-ish
     assert 'yup' == True-ish
+    assert 'Yarp' == True-ish
     assert 'Yeah' == True-ish_
     assert 'yup' == True-ish_
 
@@ -22,6 +23,7 @@ def test_true_ish_unicode():
 
 def test_false_ish():
     assert 'Nope' == False-ish
+    assert 'Narp' == False-ish
     assert 'Nah' == False-ish
 
 
