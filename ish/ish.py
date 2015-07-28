@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from __future__ import print_function
+
 import sys
 
 try:
@@ -55,14 +57,20 @@ NEUTRAL_STRINGS = [
     'neutral',
 ]
 
+try:
+    basestring
+except NameError:
+    basestring = (str, bytes)
+
+def normalize_string(s):
+    if isinstance(s, bytes):
+        s = s.decode('utf-8', 'replace')
+    return s.strip().lower()
 
 class TrueIsh(object):
     def __eq__(self, other):
         if isinstance(other, basestring):
-            if isinstance(other, str):
-                cleaned_value = other.decode('utf-8').strip().lower()
-            else:
-                cleaned_value = other.strip().lower()
+            cleaned_value = normalize_string(other)
             is_trueish = cleaned_value in TRUE_STRINGS
             is_falseish = cleaned_value in FALSE_STRINGS
             # print is_trueish, is_falseish
@@ -112,12 +120,13 @@ class Ish(object):
             return trueish
         elif other is False:
             return falseish
-        elif isinstance(other, str):
-            if other.lower() in HAPPY_STRINGS:
+        elif isinstance(other, basestring):
+            normalized = normalize_string(other)
+            if normalized in HAPPY_STRINGS:
                 return happyish
-            elif other.lower() in ANGRY_STRINGS:
+            elif normalized in ANGRY_STRINGS:
                 return angryish
-            elif other.lower() in NEUTRAL_STRINGS:
+            elif normalized in NEUTRAL_STRINGS:
                 return neutralish
         raise UnIshable('{0!r} cannot be ished'.format(other))
 
@@ -149,8 +158,8 @@ sys.modules[__name__] = RsubableModule(sys.modules[__name__])
 
 
 if __name__ == '__main__':
-    print 'Yup' == True-ish
-    print 'Nope' == True-ish
-    print 'False' == False-ish
-    print 'Yeah' == False-ish
-    print 'Whatever' == True-ish
+    print('Yup' == True-ish)
+    print('Nope' == True-ish)
+    print('False' == False-ish)
+    print('Yeah' == False-ish)
+    print('Whatever' == True-ish)
