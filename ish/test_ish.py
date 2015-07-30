@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import pytest
+from decimal import Decimal
+from fractions import Fraction
 
 import ish
 from ish import ish as ish_  # backwards compatibility
@@ -29,6 +31,16 @@ def test_false_ish():
     assert 'Narp' == False-ish
     assert 'Nah' == False-ish
     assert '' == False-ish
+
+
+def test_number_ish():
+    assert 0.2 == 0-ish
+    assert 0.6 > 0-ish
+    assert '0.2' == 0-ish
+    assert 0.4 == 0.5-ish
+    assert 120 == 100-ish
+    assert Decimal('1.2') == 1-ish
+    assert Fraction('6/5') == 1-ish
 
 
 def test_maybe():
