@@ -4,6 +4,7 @@ from __future__ import print_function
 import sys
 import string
 import numbers
+import functools
 
 try:
     from deep_neural_network.face_classifier import detect_and_predict_face_emotion
@@ -101,6 +102,7 @@ trueish = BoolIsh(True)
 falseish = BoolIsh(False)
 
 
+@functools.total_ordering
 class NumberIsh(BaseIsh):
     def __init__(self, value, precision=0.2):
         super(NumberIsh, self).__init__(value)
@@ -109,6 +111,9 @@ class NumberIsh(BaseIsh):
         self._max = value * (1 + precision)
 
     def _to_number(self, obj):
+        if isinstance(obj, numbers.Real):
+            return obj
+
         try:
             return float(obj)
         except (TypeError, ValueError):
@@ -116,16 +121,12 @@ class NumberIsh(BaseIsh):
                 return int(obj)
             except (TypeError, ValueError):
                 raise Maybe(obj)
-   
-    def __cmp__(self, other):
-        if not isinstance(other, numbers.Real):
-            other = self._to_number(other)
 
-        if other < self._min:
-            return 1
-        if other > self._max:
-            return -1
-        return 0
+    def __eq__(self, other):
+        return self._min <= self._to_number(other) <= self._max
+
+    def __lt__(self, other):
+        return self._min < self._to_number(other)
 
 
 class EmotionIsh(BaseIsh):
