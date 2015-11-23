@@ -18,7 +18,8 @@ def magic_match(pattern, target):
     return result
 
 
-if magic_match(r'[abcde]+', sys.argv[1]):
-    print 'Your match was %r' % match.group(0)
-else:
-    print 'There was no match'
+if __name__ == '__main__':
+    if magic_match(r'[abcde]+', sys.argv[1]):
+        print 'Your match was %r' % match.group(0)
+    else:
+        print 'There was no match'
