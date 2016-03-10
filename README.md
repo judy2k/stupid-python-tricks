@@ -58,3 +58,11 @@ decorator-based dependency calling mechanism. Warning, may cause seizures!
 Only one trick! A metaclass that automatically replaces `get_` and `set_`
 methods with properties that call the methods. Too much magic, but a neat trick,
 I think.
+
+## true_false
+
+You've all heard of the classic `#define TRUE FALSE` trick in C, right?
+
+## gradually_worse_pi
+
+Import this module, then import `math` and print out `pi` in a loop. I guarantee you'll be surprised!
