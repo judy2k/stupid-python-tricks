@@ -1,4 +1,4 @@
-#Stupid Python Tricks
+# Stupid Python Tricks
 
 This is (or will be) a consolidated repository of all the stupid Python tricks
 I have written (and can still find).
@@ -66,3 +66,7 @@ You've all heard of the classic `#define TRUE FALSE` trick in C, right?
 ## gradually_worse_pi
 
 Import this module, then import `math` and print out `pi` in a loop. I guarantee you'll be surprised!
+
+## autoargs
+
+It's so tiresome writing constructors that copy all their arguments to `self`. Now you can just use this very clever `@autoargs` decorator, and all will be done for you!
