@@ -1,4 +1,5 @@
 import functools
+import random
 
 
 def once_only(f):
@@ -42,6 +43,22 @@ def depends(dependency_list):
         return wrapper
 
     return decorator
+
+
+def krisskross(fn):
+    """
+    Well make you jump, jump (out of a window)
+    50% chance of reversing the order of args and kwargs keys
+    """
+
+    def wrapped(*args, **kwargs):
+        if random.randint(1, 2) == 1:
+            for k, v in kwargs.items():
+                kwargs[k[::-1]] = v
+                del kwargs[k]
+            return fn(*args[::-1], **kwargs)
+        return fn(*args, **kwargs)
+    return wrapped
 
 
 @once_only
@@ -90,3 +107,14 @@ def c3():
 
 print '--------'
 c3()
+
+@krisskross
+def guess_the_order(*args, **kwargs):
+    print args
+    print kwargs
+
+
+guess_the_order(1,2,3, hello='world')
+guess_the_order(1,2,3, hello='world')
+guess_the_order(1,2,3, hello='world')
+guess_the_order(1,2,3, hello='world')
