@@ -123,3 +123,8 @@ if __name__ == "__main__":
     import doctest
 
     doctest.testmod()
+    print("after decorating `some_method`")
+    decorator_example()
+    print()
+    print("ObedientChild implicitally calls its parents")
+    metaclass_example()
