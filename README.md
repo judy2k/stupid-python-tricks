@@ -59,6 +59,12 @@ Only one trick! A metaclass that automatically replaces `get_` and `set_`
 methods with properties that call the methods. Too much magic, but a neat trick,
 I think.
 
+## super_considered_obligatory
+
+Ever forget to `tearDown` your test's superclasses?
+Now you can force your child classes to call `super().method` implicitly.
+And provide a decorator to make it a bit less magic.
+
 ## true_false
 
 You've all heard of the classic `#define TRUE FALSE` trick in C, right?
