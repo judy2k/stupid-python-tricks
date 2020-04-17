@@ -1,7 +1,7 @@
 """We were discussing when to invoke `super().tearDown` on Django tests... a friend said
 >  a built-in context manager type thing for super calls would be a cool language feature
 
-The features below impliment that, go on, use them in real tests
+Here's an implimentation go on, use it in real tests
 your future self will be ~proud~ ~confused~ ... cursing you
 """
 import functools
@@ -69,23 +69,24 @@ class FinalSuperMeta(type):
         return type.__new__(cls, name, bases, local)
 
 
-class NervousParent(metaclass=FinalSuperMeta):
+class DontForgetToCall(metaclass=FinalSuperMeta):
     """All child classes will attempt
-    to call super on _all_ their methods
+    to call `super().childs_method`
+    on _all_ their methods
     """
 
-    def spam(self):
-        print("called NervousParent.spam")
+    def exists_on_parent_too(self):
+        print("called DontForgetToCall.exists_on_parent_too")
 
 
-class ObedientChild(NervousParent):
-    def spam(self):
-        """will _magically_ call its parent.spam"""
-        print("called ObedientChild.spam")
+class CantForgetSuper(DontForgetToCall):
+    def exists_on_parent_too(self):
+        """will _implicitly_ call its parent.exists_on_parent_too"""
+        print("called CantForgetSuper.exists_on_parent_too")
 
-    def ham(self):
-        """no ham on parent so we'll only print the below"""
-        print("called ObedientChild.ham")
+    def only_on_childclass(self):
+        """no only_on_childclass  method on parent so we'll only print 1 thing"""
+        print("called CantForgetSuper.only_on_childclass")
 
 
 def decorator_example():
@@ -96,35 +97,30 @@ def decorator_example():
     called Parent.some_method
     """
     child = DecoratorChild()
-    # method is decorated with `@super_later`
-    #  so we call super().some_method()
     child.some_method()
 
 
 def metaclass_example():
     """
-    >>> will_call_parent = ObedientChild()
-    >>> will_call_parent.spam()
-    called ObedientChild.spam
-    called NervousParent.spam
+    >>> will_call_parent = CantForgetSuper()
+    >>> will_call_parent.exists_on_parent_too()
+    called CantForgetSuper.exists_on_parent_too
+    called DontForgetToCall.exists_on_parent_too
 
-    >>> will_call_parent.ham()
-    called ObedientChild.ham
+    >>> will_call_parent.only_on_childclass()
+    called CantForgetSuper.only_on_childclass
     """
-    will_call_parent = ObedientChild()
-    # calls super().spam _implicitly_
-    #  because of parent's metaclass
-    will_call_parent.spam()
-    # there is not super.ham() so no call
-    will_call_parent.ham()
+    will_call_parent = CantForgetSuper()
+    will_call_parent.exists_on_parent_too()
+    will_call_parent.only_on_childclass()
 
 
 if __name__ == "__main__":
     import doctest
-
     doctest.testmod()
-    print("after decorating `some_method`")
+
+    print("calling decorated `Child().some_method` calls its superclass:")
     decorator_example()
     print()
-    print("ObedientChild implicitally calls its parents")
+    print("CantForgetSuper _implicitally_ calls its parents methods, if they exist:")
     metaclass_example()

@@ -61,9 +61,12 @@ I think.
 
 ## super_considered_obligatory
 
-Ever forget to `tearDown` your test's superclasses?
-Now you can force your child classes to call `super().method` implicitly.
-And provide a decorator to make it a bit less magic.
+Ever forget to call `tearDown` your test's superclass?
+Now you can ensure that any class inheriting fro you doesn't forget to call
+`super().method` _implicitly_.
+
+If that's too much magic, there is also a decorator you can put on a method
+to ensure that we call `super()`.
 
 ## true_false
 
