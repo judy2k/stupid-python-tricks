@@ -99,4 +99,4 @@ OOO = range(10)
 P = 5
 
 # Marge Simpson sticking her tongue out is valid Python code:
-print OOO[:-P]
+print(OOO[:-P])
