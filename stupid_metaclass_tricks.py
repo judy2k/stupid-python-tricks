@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 class AutoPropertyMeta(type):
     def __init__(cls, name, bases, attrd):
         # Find all getter methods:
@@ -21,7 +23,7 @@ class AutoPropertyMeta(type):
         return super(AutoPropertyMeta, cls).__init__(name, bases, attrd)
 
 
-class AutoProperty(object):
+class AutoProperty:
     # Apply the magic property-applying metaclass:
     __metaclass__ = AutoPropertyMeta
 

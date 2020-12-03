@@ -2,7 +2,7 @@ import sys
 import math as _math
 
 
-class NewMath(object):
+class NewMath:
     _pi = _math.pi
     @property
     def pi(self):

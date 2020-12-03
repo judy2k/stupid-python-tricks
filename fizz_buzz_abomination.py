@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 """
 An abominably-implemented FizzBuzz implementation.
@@ -14,7 +13,7 @@ from itertools import product
 import logging
 from pprint import pformat
 import re
-from StringIO import StringIO
+from io import StringIO
 
 
 def divisible_by(divisor):

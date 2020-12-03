@@ -7,15 +7,17 @@ def auto_args(target):
     """
     # Get a signature object for the target method:
     sig = signature(target)
+
     def replacement(self, *args, **kwargs):
         # Parse the provided arguments using the target's signature:
         bound_args = sig.bind(self, *args, **kwargs)
         # Save away the arguments on `self`:
         for k, v in bound_args.arguments.items():
-            if k != 'self':
+            if k != "self":
                 setattr(self, k, v)
         # Call the actual constructor for anything else:
         target(self, *args, **kwargs)
+
     return replacement
 
 
@@ -27,5 +29,5 @@ class MyClass:
 
 
 # Create an instance and check that the values have been stored away:
-m = MyClass('A', 'B', 'C')
-print(m.__dict__) # => {'a': 'A', 'b': 'B', 'c': 'C'}
+m = MyClass("A", "B", "C")
+print(m.__dict__)  # => {'a': 'A', 'b': 'B', 'c': 'C'}

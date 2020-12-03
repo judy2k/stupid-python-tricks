@@ -1,4 +1,4 @@
-#!python2
+#!/usr/bin/env python3
 
 """ A python port of the old #define TRUE FALSE trick. """
 

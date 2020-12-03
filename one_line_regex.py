@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
 
 import re
 import sys
@@ -19,6 +18,6 @@ def magic_match(pattern, target):
 
 
 if magic_match(r'[abcde]+', sys.argv[1]):
-    print 'Your match was %r' % match.group(0)
+    print(f"Your match was {match.group(0)}")
 else:
-    print 'There was no match'
+    print('There was no match')
