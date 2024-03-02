@@ -1,3 +1,5 @@
+
+# Test
 # Stupid Python Tricks
 
 This is (or will be) a consolidated repository of all the stupid Python tricks
