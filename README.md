@@ -1,3 +1,4 @@
+# Hi i test git forking
 # Stupid Python Tricks
 
 This is (or will be) a consolidated repository of all the stupid Python tricks
